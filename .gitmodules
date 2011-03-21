@@ -1,0 +1,9 @@
+[submodule "deps/misultin"]
+	path = deps/misultin
+	url = https://github.com/ostinelli/misultin.git
+[submodule "deps/ex_bridge"]
+	path = deps/ex_bridge
+	url = https://github.com/josevalim/ex_bridge.git
+[submodule "deps/elixir"]
+	path = deps/elixir
+	url = https://github.com/josevalim/elixir.git
