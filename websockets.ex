@@ -25,8 +25,8 @@ module Chat
       end
     end
 
-    def constructor()
-      { 'users: {:} }
+    def initialize()
+      @('users: {:})
     end
 
     def broadcast(message)
@@ -34,8 +34,6 @@ module Chat
         pid <- { 'chat_server, { 'message, message } }
       end
     end
-
-    protected
 
     def init()
       Process.flag 'trap_exit, true
@@ -105,7 +103,7 @@ module Chat
       receive
       match { 'browser, data }
         % kind <- message
-        string = String.new(data)
+        string = data.to_bin
 
         case string.split(~r{ <- }, 2)
         match ["msg", msg]
@@ -118,7 +116,7 @@ module Chat
 
         socket_loop(socket)
       match { 'chat_server, { 'message, message } }
-        string = String.new(message)
+        string = message.to_bin
         socket.send "output <- #{string}"
         socket_loop(socket)
       match other
